@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var fired = 0;
   var onHold = 0;
   const speedFactor = 0.5; // Control the overall speed of fireworks
+  const explosionSpeedFactor = 1; // Adjust this value to change explosion speed
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -143,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function makeCircleFirework(fire) {
     var color = randColor();
-    var velocity = Math.random() * 2 + 6;
+    var velocity = (Math.random() * 2 + 6) * explosionSpeedFactor;
     var max = fireNumber * 5;
     for (var i = 0; i < max; i++) {
       var rad = (i * Math.PI * 2) / max;
@@ -169,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function makeDoubleCircleFirework(fire) {
     var color = randColor();
-    var velocity = Math.random() * 2 + 8;
+    var velocity = (Math.random() * 2 + 8) * explosionSpeedFactor;
     var max = fireNumber * 3;
     for (var i = 0; i < max; i++) {
       var rad = (i * Math.PI * 2) / max;
@@ -191,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
       listFirework.push(firework);
     }
     color = randColor();
-    velocity = Math.random() * 3 + 4;
+    velocity = (Math.random() * 3 + 4) * explosionSpeedFactor;
     for (var i = 0; i < max; i++) {
       var rad = (i * Math.PI * 2) / max;
       var firework = {
@@ -216,7 +217,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function makePlanetCircleFirework(fire) {
     var color = "#aa0609";
-    var velocity = Math.random() * 2 + 4;
+    var velocity = (Math.random() * 2 + 4) * explosionSpeedFactor;
     var max = fireNumber * 2;
     for (var i = 0; i < max; i++) {
       var rad = (i * Math.PI * 2) / max;
@@ -289,7 +290,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function makeFullCircleFirework(fire) {
     var color = randColor();
-    var velocity = Math.random() * 8 + 8;
+    var velocity = (Math.random() * 8 + 8) * explosionSpeedFactor;
     var max = fireNumber * 3;
     for (var i = 0; i < max; i++) {
       var rad = (i * Math.PI * 2) / max;
@@ -335,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function makeDoubleFullCircleFirework(fire) {
     var color = randColor();
-    var velocity = Math.random() * 8 + 8;
+    var velocity = (Math.random() * 8 + 8) * explosionSpeedFactor;
     var max = fireNumber * 3;
     for (var i = 0; i < max; i++) {
       var rad = (i * Math.PI * 2) / max;
@@ -403,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function makeHeartFirework(fire) {
     var color = randColor();
-    var velocity = Math.random() * 3 + 3;
+    var velocity = (Math.random() * 3 + 3) * explosionSpeedFactor;
     var max = fireNumber * 5;
     var rotate = Math.random() * Math.PI * 2;
     for (var i = 0; i < max; i++) {
@@ -470,7 +471,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function makeSpark(special) {
     var color = special.fill;
-    var velocity = Math.random() * 6 + 12;
+    var velocity = (Math.random() * 6 + 12) * explosionSpeedFactor;
     var max = fireNumber;
     for (var i = 0; i < max; i++) {
       var rad =
@@ -504,7 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function chainSpark(parentSpark) {
     var color = parentSpark.fill;
     if (parentSpark.chain > 0) {
-      var velocity = parentSpark.base.velocity * 0.6;
+      var velocity = parentSpark.base.velocity * 0.6 * explosionSpeedFactor;
       var max = Math.round(Math.random() * 5);
       for (var i = 0; i < max; i++) {
         var rad =
