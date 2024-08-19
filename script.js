@@ -2,18 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var canvas = document.getElementById("canvas");
   var ctx = canvas.getContext("2d");
 
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    ctx.fillStyle = "#000000";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    center = { x: canvas.width / 2, y: canvas.height / 2 };
-  }
-
-  window.addEventListener("resize", resizeCanvas);
-
-  resizeCanvas();
-
   var listFire = [];
   var listFirework = [];
   var listText = [];
@@ -26,6 +14,20 @@ document.addEventListener("DOMContentLoaded", function () {
   var fired = 0;
   var onHold = 0;
   const speedFactor = 0.5; // Control the overall speed of fireworks
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.fillStyle = "#000000";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    center = { x: canvas.width / 2, y: canvas.height / 2 };
+  }
+
+  window.addEventListener("resize", resizeCanvas);
+
+  resizeCanvas();
+
+  var center = { x: canvas.width / 2, y: canvas.height / 2 };
 
   var actions = [
     makeDoubleFullCircleFirework,
