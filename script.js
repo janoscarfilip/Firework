@@ -20,7 +20,29 @@ document.addEventListener("DOMContentLoaded", function () {
     canvas.height = window.innerHeight;
     ctx.fillStyle = "#000000";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Update center and range based on the new canvas size
     center = { x: canvas.width / 2, y: canvas.height / 2 };
+    range = Math.min(canvas.width, canvas.height) / 5;
+
+    // Update existing fireworks, fires, and other elements positions
+    listFire.forEach((fire) => {
+      fire.x = (Math.random() * range) / 2 - range / 4 + center.x;
+      fire.y = Math.random() * range * 2.5 + canvas.height;
+      fire.far = Math.random() * range + (center.y - range);
+      fire.base.x = fire.x;
+      fire.base.y = fire.y;
+    });
+
+    listFirework.forEach((firework) => {
+      firework.x = canvas.width / 2;
+      firework.y = canvas.height / 2;
+    });
+
+    listSpecial.forEach((special) => {
+      special.x = canvas.width / 2;
+      special.y = canvas.height;
+      special.far = Math.random() * range * 4 - range + center.y;
+    });
   }
 
   window.addEventListener("resize", resizeCanvas);
@@ -740,4 +762,5 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
   }
+  resizeCanvas(); // Initial call to set up canvas and elements correctly
 });
