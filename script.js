@@ -610,25 +610,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // update text logic
-    for (var i = listText.length - 1; i >= 0; i--) {
-      var text = listText[i];
-      text.vx *= 0.9;
-      text.vy *= 0.9;
-      text.direct *= 0.9;
-      text.x += text.vx + text.direct;
-      text.y += text.vy;
-      text.vy += text.ay;
-      text.alpha = text.life / text.base.life;
-      text.size = text.alpha * text.base.size;
-      text.alpha = text.alpha > 0.6 ? 1 : text.alpha;
-      //
-      text.life--;
-      if (text.life <= 0) {
-        listText.splice(i, 1);
-      }
-    }
-
     // update special logic
     for (var i = listSpecial.length - 1; i >= 0; i--) {
       var special = listSpecial[i];
@@ -709,10 +690,6 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var i = 0; i < listSpecial.length; i++) {
       var special = listSpecial[i];
       ctx.globalAlpha = special.alpha;
-      // ctx.beginPath();
-      // ctx.arc(special.x, special.y, special.size, 0, Math.PI * 2);
-      // ctx.closePath();
-      // ctx.fill();
       ctx.fillStyle = special.fill;
       ctx.fillRect(
         special.x - special.size,
@@ -725,10 +702,6 @@ document.addEventListener("DOMContentLoaded", function () {
     for (var i = 0; i < listSpark.length; i++) {
       var spark = listSpark[i];
       ctx.globalAlpha = spark.alpha;
-      // ctx.beginPath();
-      // ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
-      // ctx.closePath();
-      // ctx.fill();
       ctx.fillStyle = spark.fill;
       ctx.fillRect(
         spark.x - spark.size,
@@ -763,5 +736,5 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
   }
-  resizeCanvas(); // Initial call to set up canvas and elements correctly
+  resizeCanvas();
 });
