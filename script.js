@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function makePlanetCircleFirework(fire) {
-    var color = "#aa0609";
+    var color = randColor();
     var velocity = (Math.random() * 2 + 4) * explosionSpeedFactor;
     var max = fireNumber * 2;
     for (var i = 0; i < max; i++) {
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
       listFirework.push(firework);
     }
     max = fireNumber * 3;
-    color = "#ff9";
+    color = randColor();
     var rotate = Math.random() * Math.PI * 2;
     var vx = velocity * (Math.random() + 2);
     var vy = velocity * 0.6;
@@ -503,7 +503,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function chainSpark(parentSpark) {
-    var color = parentSpark.fill;
+    var color = "#f80";
     if (parentSpark.chain > 0) {
       var velocity = parentSpark.base.velocity * 0.6 * explosionSpeedFactor;
       var max = Math.round(Math.random() * 5);
