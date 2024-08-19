@@ -85,28 +85,18 @@ document.addEventListener("DOMContentLoaded", function () {
     listFire.push(fire);
   }
 
-  // Functions for fireworks, sparks, etc., go here...
-
   (function loop() {
     requestAnimationFrame(loop);
     update();
     draw();
   })();
 
-  function update() {
-    // Update logic for fire, fireworks, sparks, etc.
-  }
-
   function draw() {
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.globalCompositeOperation = "lighter";
-
-    // Drawing logic for fire, fireworks, sparks, etc.
   }
-
-  // All other necessary functions like makeCircleFirework, makeDoubleCircleFirework, etc.
 
   function randColor() {
     var r = Math.floor(Math.random() * 256);
@@ -139,8 +129,6 @@ document.addEventListener("DOMContentLoaded", function () {
       listSpecial.push(special);
     }
   }
-
-  // Other functions like makeDoubleCircleFirework, makeHeartFirework, etc., go here...
 
   function makeCircleFirework(fire) {
     var color = randColor();
